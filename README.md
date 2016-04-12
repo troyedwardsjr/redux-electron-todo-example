@@ -30,3 +30,7 @@ gulp serve
 - [ ] Start with OS option.
 - [ ] Make sure reducers are pure functions
 - [ ] Export to PDF functionality
+
+
+Copyright 2016 Troy Edwards Jr
+[Link](https://opensource.org/licenses/MIT "MIT LICENSE")
