@@ -1,0 +1,13 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "globals": {
+    "React": false
+  },
+  "extends": ["standard", "standard-jsx"],
+  "plugins": ["react"]
+}

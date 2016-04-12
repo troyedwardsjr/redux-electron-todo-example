@@ -1,0 +1,35 @@
+div {
+  h1 {
+    font-size: 3em;
+    color: green;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+button {
+  -webkit-app-region: no-drag;
+}
+
+.titlebar {
+  -webkit-user-select: none;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #eee;
+}
