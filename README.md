@@ -32,5 +32,6 @@ gulp serve
 - [ ] Export to PDF functionality
 
 
-Copyright 2016 Troy Edwards Jr
-[Link](https://opensource.org/licenses/MIT "MIT LICENSE")
+© 2016 Troy Edwards Jr
+
+[MIT LICENSE](https://opensource.org/licenses/MIT "MIT LICENSE")
