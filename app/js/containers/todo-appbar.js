@@ -20,25 +20,25 @@ export default class TodoAppBar extends React.Component {
   render() {
     return (
       <div>
-		<AppBar
-	    title="Todo App"
-	    style={{WebkitAppRegion: "drag"}}
-	    iconElementLeft={<IconButton onTouchTap={() => {ipc.send('close-main-window')}}><NavigationClose /></IconButton>}
-	    iconElementRight={
-	      <IconMenu
-	        iconButtonElement={
-	          <IconButton><MoreVertIcon /></IconButton>
-	        }
-	        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-	        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-	      >
-	        <MenuItem primaryText="Export to PDF (n/a)" />
-	      </IconMenu>
-	    }
-	  	/>
+    <AppBar
+      title="Todo App"
+      style={{WebkitAppRegion: "drag"}}
+      iconElementLeft={<IconButton onTouchTap={() => {ipc.send('close-main-window')}}><NavigationClose /></IconButton>}
+      iconElementRight={
+        <IconMenu
+          iconButtonElement={
+            <IconButton><MoreVertIcon /></IconButton>
+          }
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+          <MenuItem primaryText="Export to PDF (n/a)" />
+        </IconMenu>
+      }
+      />
       </div>
     );
   }
 }
 
-					
+          
