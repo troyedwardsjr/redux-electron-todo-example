@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+var remote = window.require('remote');
+var ipc = window.require("electron").ipcRenderer;
 
 // Appbar
 import AppBar from 'material-ui/lib/app-bar';
@@ -21,7 +23,7 @@ export default class TodoAppBar extends React.Component {
 		<AppBar
 	    title="Todo App"
 	    style={{WebkitAppRegion: "drag"}}
-	    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+	    iconElementLeft={<IconButton onTouchTap={() => {ipc.send('close-main-window')}}><NavigationClose /></IconButton>}
 	    iconElementRight={
 	      <IconMenu
 	        iconButtonElement={

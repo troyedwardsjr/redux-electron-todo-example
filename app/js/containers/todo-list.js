@@ -23,13 +23,13 @@ import TextField from 'material-ui/lib/text-field';
 
 const styles = {
 		height: 500,
-    overflowY: 'auto'
+		overflowY: 'auto'
 }
 
 const TODO_FILTERS = {
-  SHOW_ALL: () => true,
-  SHOW_ACTIVE: todo => !todo.completed,
-  SHOW_COMPLETED: todo => todo.completed
+	SHOW_ALL: () => true,
+	SHOW_ACTIVE: todo => !todo.completed,
+	SHOW_COMPLETED: todo => todo.completed
 }
 
 class TodoList extends React.Component {
@@ -65,62 +65,62 @@ class TodoList extends React.Component {
 		}
 	}
 
-  renderList() {
-  	if (this.props.todoItems != null) {
-  		let shownTodoList = this.props.todoItems.filter(this.state.filter);
-	  	return shownTodoList.map((item) => {
-        return(
-		       <div key={item.id}>
-						<ListItem
-							className="list-group-item"
-							style={this.handleCompleteStyle(item.completed)}
-							primaryText={item.todoItem} 
-							leftCheckbox={
-								<Checkbox 
-									checked={item.completed} 
-									onCheck={() => this.handleComplete(item.id)}
+		renderList() {
+			if (this.props.todoItems != null) {
+				let shownTodoList = this.props.todoItems.filter(this.state.filter);
+				return shownTodoList.map((item) => {
+						return(		
+							<div key={item.id}>
+								<ListItem
+									className="list-group-item"
+									style={this.handleCompleteStyle(item.completed)}
+									primaryText={item.todoItem} 
+									leftCheckbox={
+											<Checkbox 
+													checked={item.completed} 
+													onCheck={() => this.handleComplete(item.id)}
+											/>
+									}
+									rightIconButton={
+											<IconButton 
+											onTouchTap={() => this.handleDelete(item.id)} >
+													<NavigationClose />
+											</IconButton>
+									}
 								/>
-							}
-							rightIconButton={
-								<IconButton 
-								onTouchTap={() => this.handleDelete(item.id)} >
-									<NavigationClose />
-								</IconButton>
-							}
-						/>
-						<Divider />
-					</div>
-        );
-	  	});
-  	}
-	}
+								<Divider />
+							</div>
+						);
+				});
+			}
+		}
 
 	render() {
 		return (
 			<div>
-			  <Tabs>
-			    <Tab
-			      icon={<FontIcon className="material-icons">assignment</FontIcon>}
-			      label="All"
-			      onActive={ () => {
-			      	this.setState({filter: TODO_FILTERS.SHOW_ALL});} 
-			      }
-			    />
-			    <Tab
-			      icon={<FontIcon className="material-icons">alarm</FontIcon>}
-			      label="Active"
-			      onActive={() => {
-			      	this.setState({filter: TODO_FILTERS.SHOW_ACTIVE});}
-			    }
-			    />
-			    <Tab
-			      icon={<FontIcon className="material-icons">delete</FontIcon>}
-			      label="Completed"
-			      onActive={ () => {
-			      	this.setState({filter: TODO_FILTERS.SHOW_COMPLETED});} 
-			    }
-			    />
-			  </Tabs>
+				<Tabs>
+					<Tab
+						icon={<FontIcon className="material-icons">assignment</FontIcon>}
+						label="All"
+						onActive={ () => {
+							this.setState({filter: TODO_FILTERS.SHOW_ALL});} 
+						}
+					/>
+					<Tab
+						icon={<FontIcon className="material-icons">alarm</FontIcon>}
+						label="Active"
+						onActive={() => {
+							this.setState({filter: TODO_FILTERS.SHOW_ACTIVE});}
+					}
+					/>
+					<Tab
+						icon={<FontIcon className="material-icons">delete</FontIcon>}
+						label="Completed"
+						onActive={ () => {
+							this.setState({filter: TODO_FILTERS.SHOW_COMPLETED});} 
+					}
+					/>
+				</Tabs>
 				<TextField
 					hintText="What needs to be done?"
 					onKeyDown={this.handleSubmit.bind(this)}
@@ -144,11 +144,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-  	addTodo: addTodo, 
-  	deleteTodo: deleteTodo,
-  	completeTodo: completeTodo 
-  }, dispatch);
+	return bindActionCreators({
+		addTodo: addTodo, 
+		deleteTodo: deleteTodo,
+		completeTodo: completeTodo 
+	}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

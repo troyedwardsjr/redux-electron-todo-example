@@ -1,6 +1,8 @@
 'use strict'
 
 const electron = require('electron')
+// Interprocess communication so that React can communicate with Electron.
+const ipc = require('ipc');
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -32,6 +34,10 @@ let createWindow = () => {
   })
 }
 
+ipc.on('close-main-window', function () {
+    app.quit();
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow)
@@ -52,4 +58,3 @@ app.on('activate', () => {
     createWindow()
   }
 })
-

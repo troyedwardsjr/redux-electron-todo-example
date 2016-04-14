@@ -13,7 +13,7 @@ const store = createStore(reducers);
 injectTapEventPlugin();
 
 ReactDOM.render(
-	<Provider store={store}>
+		<Provider store={store}>
     	<Main />
   	</Provider>,
   	document.getElementById('app')
