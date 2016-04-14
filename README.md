@@ -25,7 +25,7 @@ gulp serve
 
 - [x] App Core Functionality
 - [x] Save data to localStorage
-- [ ] Tie appbar exit button to electron
+- [x] Tie appbar exit button to electron
 - [ ] Minimize to system tray.
 - [ ] Start with OS option.
 - [ ] Make sure reducers are pure functions
