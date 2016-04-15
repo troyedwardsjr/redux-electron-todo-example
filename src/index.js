@@ -1,18 +1,21 @@
 'use strict'
 
-const electron = require('electron')
+const electron = require('electron');
 // Interprocess communication so that React can communicate with Electron.
 const ipc = require('ipc');
 // Module to control application life.
-const app = electron.app
+const app = electron.app;
+// Module to control application tray and menu.
+const Tray = electron.Tray;
+const Menu = electron.Menu;
 // Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
+const BrowserWindow = electron.BrowserWindow;
 
-const path = require('path')
+const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
 
 let createWindow = () => {
   // Create the browser window.
@@ -32,10 +35,40 @@ let createWindow = () => {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+
+  // System tray.
+  var tray = new Tray('./app/assets/assignment.png');
+
+  var contextMenu = Menu.buildFromTemplate([
+    { label: 'open', click: () => {mainWindow.restore(); mainWindow.show();} },
+    { label: 'minimize', click: () => {mainWindow.minimize();} },
+    { label: 'minimize to system tray', click: () => {mainWindow.hide()} },
+    { label: 'close', click: 
+      function handleClicked () {
+        app.quit();
+      }
+    }
+  ]);
+
+  tray.on('click', function handleClicked () {
+    mainWindow.restore();
+    mainWindow.show();
+  });
+  tray.setToolTip('Material Todo App');
+  tray.setContextMenu(contextMenu);
 }
 
 ipc.on('close-main-window', function () {
     app.quit();
+});
+
+ipc.on('minimize', function () {
+    mainWindow.minimize();
+});
+
+ipc.on('minimize-to-tray', function () {
+    mainWindow.hide();
 });
 
 // This method will be called when Electron has finished
