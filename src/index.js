@@ -5,6 +5,7 @@ const electron = require('electron');
 const ipc = require('ipc');
 // Module to control application life.
 const app = electron.app;
+const dialog = electron.dialog;
 // Module to control application tray and menu.
 const Tray = electron.Tray;
 const Menu = electron.Menu;
@@ -12,7 +13,7 @@ const Menu = electron.Menu;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
-
+const fs = require('fs');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -35,7 +36,6 @@ let createWindow = () => {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-
 
   // System tray.
   var tray = new Tray('./app/assets/assignment.png');
@@ -71,6 +71,14 @@ ipc.on('minimize-to-tray', function () {
     mainWindow.hide();
 });
 
+ipc.on('export-to-pdf', function () {
+
+  let pdfSavePath = dialog.showSaveDialog({ 
+    title: 'Save PDF File', 
+    filters: [{ name: 'PDF Files', extensions: ['pdf'] }]
+  });
+
+});
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow)
@@ -91,3 +99,4 @@ app.on('activate', () => {
     createWindow()
   }
 })
+

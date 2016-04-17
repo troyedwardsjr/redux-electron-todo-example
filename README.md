@@ -1,6 +1,6 @@
 # Redux Electron Todo Example
 
-React + Redux + Electron + Material UI + Sass + Browserify + Gulp Todo List Application example that lives in your system tray. It saves all of you data to localStorage, is resizable, frameless and can export your current todo list to txt for safe storage.
+React + Redux + Electron + Material UI + Sass + Browserify + Gulp Todo List Application example that lives in your system tray. It saves all of you data to localStorage, is resizable, frameless and can export your current todo list to PDF for safe storage.
 
 ![screenshot](http://i.imgur.com/aipE0VJ.png)
 
@@ -23,13 +23,12 @@ gulp serve
 
 ### Todo
 
-- [x] App Core Functionality
-- [x] Save data to localStorage
-- [x] Tie appbar exit button to electron
+- [x] App Core Functionality.
+- [x] Save data to localStorage.
+- [x] Tie appbar exit button to electron.
 - [x] Minimize to system tray.
-- [ ] Start with OS option.
-- [ ] Make sure reducers are pure functions
-- [ ] Export to txt functionality (for safe keeping).
+- [x] Export to PDF functionality (for safe keeping).
+- [ ] Make sure reducers are pure functions.
 
 
 © 2016 Troy Edwards Jr
