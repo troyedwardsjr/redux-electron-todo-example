@@ -1,41 +1,26 @@
-const initialState = () => { 
-	if (JSON.parse(localStorage.getItem('todos')) === null) {
-		return [];
-	} else {
-		return JSON.parse(localStorage.getItem('todos'));
-	}
+const initialState = () => {
+  const todos = localStorage.getItem('todos');
+  
+  return todos ? JSON.parse(todos) : [];
 }
 
 export default function todoItems(state = initialState(), action) {
+    switch (action.type) {
+      case 'TODO_ADDED':
+        return state.concat(action.payload);
 
-	let combinedTodoList;
+      case 'TODO_DELETED':
+        return state.filter(todo =>
+            todo.id !== action.payload
+        );
 
-	switch(action.type) {
-
-		case 'TODO_ADDED':
-			combinedTodoList = state.concat(action.payload);
-			localStorage.setItem('todos', JSON.stringify(combinedTodoList));
-			return combinedTodoList;
-
-		case 'TODO_DELETED':
-			combinedTodoList = state.filter(todo =>
-        todo.id !== action.payload
-      );
-      localStorage.setItem('todos', JSON.stringify(combinedTodoList));
-			return combinedTodoList;
-
-		case 'TODO_COMPLETED':
-			combinedTodoList = state.map((todo) => {
-				if (todo.id === action.payload)
-				{
-					todo.completed = !todo.completed;
-				}
-        return todo;
-			});
-      localStorage.setItem('todos', JSON.stringify(combinedTodoList));
-			return combinedTodoList;
-
-	}
-	return state; 
+      case 'TODO_COMPLETED':
+        return state.map((todo) => {
+            if (todo.id === action.payload) {
+                todo.completed = !todo.completed;
+            }
+            return todo;
+        });
+    }
+    return state; 
 }
-

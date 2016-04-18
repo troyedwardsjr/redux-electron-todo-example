@@ -41,6 +41,10 @@ class TodoList extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
   }
+  
+  componentWillReceiveProps(nextProps) {
+    localStorage.setItem('todos', JSON.stringify(nextProps.todoItems));
+  }
 
   handleSubmit(e) {
     if (e.which === 13) {
@@ -145,9 +149,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    addTodo: addTodo, 
-    deleteTodo: deleteTodo,
-    completeTodo: completeTodo 
+    addTodo, 
+    deleteTodo,
+    completeTodo 
   }, dispatch);
 }
 

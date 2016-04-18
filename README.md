@@ -28,8 +28,9 @@ gulp serve
 - [x] Tie appbar exit button to electron.
 - [x] Minimize to system tray.
 - [x] Export to PDF functionality (for safe keeping).
-- [ ] Make sure reducers are pure functions.
+- [x] Make sure reducers are pure functions.
 
+Special thanks to [l0gicgate](https://github.com/l0gicgate) for some advice. 
 
 © 2016 Troy Edwards Jr
 
